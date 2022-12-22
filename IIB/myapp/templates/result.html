@@ -11,10 +11,8 @@
 <body>
     <h4>Resume uploaded sucessfully</h4>
     {% block content %}
-    <p>Resume Score =
-        {% csrf_token %}  
-            {{ score }}  % 
-    </p>
+    <p>Hello <strong>{{ name }}</strong></p>
+    <p>Resume Score =<strong> {{ score }}  % </strong></p>
     {% endblock content %}
 </body>
 </html>

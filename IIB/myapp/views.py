@@ -3,17 +3,18 @@ from django.shortcuts import render
 from django.http import HttpResponse  
 from myapp.functions.functions import handle_uploaded_file  
 from myapp.forms import StudentForm  
-import random
-num = random.random()
-score = num
+
 def demo(request):  
     if request.method == 'POST':  
         student = StudentForm(request.POST, request.FILES) 
         context={}
-        score = random.randint(40,100)
-        score = score%100
-        context['score'] = score
+        score = handle_uploaded_file(request.FILES['file'])
+        context = {
+            'score': score,
+            'name': request.POST['firstname']
+        }
         return render(request,"result.html",context)
+        
         # if student.is_valid():  
         #     handle_uploaded_file(request.FILES['file'])  
         #     # return HttpResponse("File uploaded successfuly")  
