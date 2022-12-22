@@ -8,10 +8,11 @@ def demo(request):
     if request.method == 'POST':  
         student = StudentForm(request.POST, request.FILES) 
         context={}
-        score = handle_uploaded_file(request.FILES['file'])
+        score = handle_uploaded_file(request.FILES['file'],request.POST['job'])
         context = {
             'score': score,
-            'name': request.POST['firstname']
+            'name': request.POST['firstname'],
+            'job' : request.POST['job']
         }
         return render(request,"result.html",context)
         

@@ -75,16 +75,16 @@ def getScore(text1, text2): #get similarity using cosine similarity
         return float(numerator) / denominator
 
 
-def handle_uploaded_file(f):  
-    with open('myapp/static/'+f.name, 'wb+') as destination:  
+def handle_uploaded_file(f,job):  
+    with open('myapp/static/resume/'+f.name, 'wb+') as destination:  
         for chunk in f.chunks():  
             destination.write(chunk)  
 
 
-    job = 'software developer'
+    # job = 'software developer'
     jobData = getJobData(job)
 
-    pdfFileObj = open('myapp/static/'+f.name ,'rb')
+    pdfFileObj = open('myapp/static/resume/'+f.name ,'rb')
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     
     resumeText = getText(pdfReader)
