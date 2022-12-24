@@ -26,7 +26,16 @@ def demo(request):
         return render(request,"demo.html",{'form':student})  
 
 def login(request):
-    return render(request,"login.html")
+    if request.method == 'POST':
+        if request.POST['email']=='viv@gmail.com' and request.POST['password'] == 'viv123':
+            return render(request,"home.html")
+        else:
+            context = {
+                'msg': 'Wrong email or password'
+            }
+            return render(request,"login.html",context)
+    else:
+        return render(request,"login.html")
 def home(request):
     return render(request,"home.html")
 def features(request):

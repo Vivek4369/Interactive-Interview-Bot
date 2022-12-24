@@ -15,7 +15,7 @@
     <div class="text-center center-div" id="login">
         <div class="container w-25 border py-5">
             <div class="title pb-5">
-                <h2 class="font-weight-bold">Login System</h2>
+                <h2 class="font-weight-bold">Login</h2>
                 <span>Log in for the existing user</span>
                 <!-- <% if(locals.logout){ %>
                     <div class="alter alert-success text-center">
@@ -23,7 +23,9 @@
                     </div>
                 <% } %> -->
             </div>
-            <form action="/route/login" method="POST" class="pt-3">
+            <form method="POST" class="pt-3">
+                {% csrf_token %}
+                {{ msg }}
                 <div class="form-group">
                     <input type="email" class="form-control" placeholder="email" name="email">
                     <small class="form-text text-muted text-left">Register email address</small>
