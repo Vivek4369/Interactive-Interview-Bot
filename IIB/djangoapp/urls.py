@@ -15,17 +15,33 @@ Including another URLconf
 """
 from django.contrib import admin  
 from django.urls import path  
-from myapp import views  
+from myapp import views as user_views
+from admin_app import views as admin_views
 urlpatterns = [  
-    path('', views.login),
-    path('login/',views.login),
+    path('', user_views.login),
+    path('login/',user_views.login),
     path('admin/', admin.site.urls),  
-    path('demo/', views.demo),  
-    path('home/', views.home),
-    path('features/', views.features),
-    path('integration/', views.integration),
-    path('resources/', views.resources),
-    path('solutions/', views.solutions),
-    path('registration/', views.registration),
-    path('result/', views.result)
+    path('demo/', user_views.demo),  
+    path('home/', user_views.home),
+    path('features/', user_views.features),
+    path('integration/', user_views.integration),
+    path('resources/', user_views.resources),
+    path('solutions/', user_views.solutions),
+    path('registration/', user_views.registration),
+    path('result/', user_views.result),
+    path('dashboard/', user_views.dashboard),
+    path('admin_login/',admin_views.admin_login),
+    path('jobs/', user_views.jobs),
+
+    path('admin_demo/', admin_views.admin_demo),  
+    path('admin_home/', admin_views.admin_home),
+    path('admin_features/', admin_views.admin_features),
+    path('admin_integration/', admin_views.admin_integration),
+    path('admin_resources/', admin_views.admin_resources),
+    path('admin_solutions/', admin_views.admin_solutions),
+    path('admin_registration/', admin_views.admin_registration),
+    path('admin_result/', admin_views.admin_result),
+    path('admin_dashboard/', admin_views.admin_dashboard),
+    path('new_job/', admin_views.new_job)
+
 ]  

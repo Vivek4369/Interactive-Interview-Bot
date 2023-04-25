@@ -1,0 +1,52 @@
+{% extends "admin_base.html" %} 
+{% block content %} 
+{% load static %}
+
+  <!-- Home section -->
+  <div class="hero-section">
+    <div class="hero-work hero-sec">
+      <p class="hero-heading">HOW IT WORKS</p><br>
+      <p class="hero-para">Our interview bot uses artificial intelligence to analyze your resume and provide feedback on how to improve it. You'll also have the opportunity to practice your interview skills with our interactive chatbot, which will ask you common interview questions and provide feedback on your answers.</p>
+    </div>
+
+    <div class="hero-benefits hero-sec">
+      <p class="hero-heading">BENEFITS</p><br>
+        <ul class="hero-para">
+          <li>Improve your resume and cover letter</li>
+          <li>Practice your interview skills</li>
+          <li>Receive feedback from experts in your field</li>
+          <li>Stand out to potential employers</li>
+          <li>Increase your chances of getting hired</li>
+        </ul>
+    </div>
+            
+            <!-- Spotlight -->
+            <p class="hero-heading">SPOTLIGHT</p>
+            <!-- Image Gallery -->
+            <div class="row">
+              <div class="column">
+                <img src="{% static 'upload/forbes.jpg' %}" href="https://www.forbes.com/sites/forbestechcouncil/2019/07/23/how-companies-are-augmenting-human-intelligence-with-ai/?sh=643b88a43135">
+                <p><b>forbes.com</b></p>
+                <br><p>How Companies Are Augmenting Human Intelligence With AI</p>
+              </div>
+              <div class="column">
+                <img src="{% static 'upload/analyticsindiamag.png' %}" href="https://analyticsindiamag.com/bengaluru-based-recruitment-platform-skillate-reduces-hiring-time-by-50-using-nlp-deep-learning/">
+                <p><b>analyticsindiamag.com.com</b></p>
+                <br><p>Bengaluru-based Recruitment Platform Skillate Reduces Hiring Time By 50% Using NLP & Deep Learning</p>
+
+              </div>
+              <div class="column">
+                <img src="{% static 'upload/economicstimes.png' %}" href="https://economictimes.indiatimes.com/jobs/how-artificial-intelligence-is-reshaping-recruitment-and-what-it-means-for-the-future-of-jobs/articleshow/60985946.cms">
+                <p><b>economicstimes.indiatimes.com</b></p>
+                <br><p>How artificial intelligence is reshaping recruitment, and what it means for the future of jobs</p>
+              </div>
+              
+
+            </div>
+
+            <!-- // Spotlight -->
+  </div>
+  <!-- // Home section -->
+
+<!-- Footer -->
+{% endblock %} 

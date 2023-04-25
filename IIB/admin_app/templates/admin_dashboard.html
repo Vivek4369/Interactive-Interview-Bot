@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static 'css/admin-dashboard.css' %}" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">  
+  <title>IIB: Recruitment Platform</title>
+</head>
+</html>
+<body>
+      <!-- Header and Nav -->
+  <header>
+    <nav>
+      <div class="main">
+        
+        <ul class="main-list">
+          <li class="main-list-item"><a href="/admin_home">ADmin-Home</a></li>
+          <li class="main-list-item"><a href="/admin_solutions">Solutions</a></li>
+          <li class="main-list-item"><a href="/admin_features">Features</a></li>
+          <li class="main-list-item"><a href="/admin_resources">Resources</a></li>
+          <li class="main-list-item"><a href="/admin_demo">Demo</a></li>
+          <li class="active main-list-item"><a href="/admin_dashboard">Dashboard</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- // Header and Nav -->
+
+  </header>
+  {% csrf_token %}
+  {{ msg }}
+  <div class="dashboard">
+    {% for i in data %}
+    <div class="intro">
+        <p class="title">WELCOME  <strong>{{ i.4 }}</strong></p>
+        <a><button class="edit-profile">Edit Profile</button></a>
+    </div>
+    <div class="container">
+        <div class="item">
+            <div class="item-title">Business Email</div>
+            <div class="item-value">{{i.0}}</div>
+        </div>
+        <div class="item">
+            <div class="item-title">Company Name</div>
+            <div class="item-value">{{i.4}}</div>
+        </div>
+        <div class="item">
+            <div class="item-title">First Name</div>
+            <div class="item-value">{{i.2}}</div>
+        </div>
+        <div class="item">
+            <div class="item-title">Last Name</div>
+            <div class="item-value">{{i.3}}</div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="create-job">
+    <a href="/new_job"><button class="new-job">Create a new job</button></a>
+  </div>
+
+
+  <footer>
+    <div class="footer">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h1 class="logo-text">
+            <span class="logo-span">O</span>ur
+            <span class="logo-span">T</span>eam
+            <br><span class="logo-span">A</span>nurag
+            <span class="logo-span">P</span>atter
+            <br><span class="logo-span">V</span>ipul
+            <span class="logo-span">K</span>anjolia
+            <br><span class="logo-span">V</span>ivek
+          </h1>
+          <p class="footer-para">
+            Let us help you transform your hiring process
+          </p>
+          <div class="contact">
+            <span><i class="fas fa-phone"></i>&nbsp; +91 00000 00000</span>
+            <span
+              ><i class="fas fa-envelope"></i>&nbsp;
+              contact@iib.com</span>
+          </div>
+          
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; | Designed By IIB Team
+      </div>
+    </div>
+  </footer>
+  <!-- // Footer -->
+  </body>
+  
+  </html>

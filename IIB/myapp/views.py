@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+#User_app
 from django.http import HttpResponse  
 from myapp.functions.functions import handle_uploaded_file  
 from myapp.forms import StudentForm  
@@ -10,17 +10,49 @@ ln=''
 mail=''
 pw=''
 cpw=''
+id = 0
+
+resumeScore=''
+job=''
 
 
 def demo(request):  
     if request.method == 'POST':  
+        global fn,ln,mail,job,resumeScore
         student = StudentForm(request.POST, request.FILES) 
         context={}
         score = handle_uploaded_file(request.FILES['file'],request.POST['job'])
+        # context = {
+        #     'score': score,
+        #     'name': request.POST['firstname'],
+        #     'job' : request.POST['job']
+        # }
+        m = sql.connect(host='localhost', user='root', passwd='Viv@4369',database='iib')
+        cursor = m.cursor()
+        data = request.POST
+        for key,value in data.items():
+            if key=="firstname":
+                fn = value
+            if key =="lastname":
+                ln = value
+            if key=="email":
+                mail = value
+            if key =="job":
+                job = value
+        
+
+        cmd = "insert into resume Values('{}','{}','{}','{}','{}')".format(fn,ln,mail,job,score)
+        cursor.execute(cmd)
+        m.commit()
+
+        cmd = "select * from resume"
+        cursor.execute(cmd)
+        t = tuple(cursor.fetchall())
         context = {
             'score': score,
             'name': request.POST['firstname'],
-            'job' : request.POST['job']
+            'job' : request.POST['job'],
+            'resumedata' : t
         }
         return render(request,"result.html",context)
         
@@ -34,7 +66,7 @@ def demo(request):
         return render(request,"demo.html",{'form':student})  
 
 def login(request):
-    global mail,pw
+    global mail,pw,id
     if request.method == 'POST':
         m = sql.connect(host='localhost', user='root', passwd='Viv@4369',database='iib')
         cursor = m.cursor()
@@ -54,6 +86,10 @@ def login(request):
             }
             return render(request,'login.html',context)
         else:
+            cmd = "select UserID from users where email='{}'".format(mail)
+            cursor.execute(cmd)
+            t = tuple(cursor.fetchall())
+            id = t[0][0]
             return render(request,'home.html')
 
     else:
@@ -93,7 +129,7 @@ def registration(request):
             if key =="cpassword":
                 cpw = value
 
-        cmd = "insert into users Values('{}','{}','{}','{}','{}')".format(fn,ln,mail,pw,cpw)
+        cmd = "insert into users(FirstName,LastName,Email,Password,cPassword) Values('{}','{}','{}','{}','{}')".format(fn,ln,mail,pw,cpw)
         cursor.execute(cmd)
         m.commit()
         context = {
@@ -105,4 +141,39 @@ def registration(request):
         return render(request,"signup.html")
 
 def result(request):
-    return render(request,"result.html")
+    m = sql.connect(host='localhost', user='root', passwd='Viv@4369',database='iib')
+    cursor = m.cursor()
+    
+    cmd = "select * from users"
+    cursor.execute(cmd)
+    t = tuple(cursor.fetchall())
+    context = {
+        'data' : t
+    }
+    return render(request,"result.html",context)
+
+def dashboard(request):
+    global id
+    m = sql.connect(host='localhost', user='root', passwd='Viv@4369',database='iib')
+    cursor = m.cursor()
+
+    cmd = "select * from users where UserID='{}'".format(id)
+    cursor.execute(cmd)
+    t = tuple(cursor.fetchall())
+    context = {
+        'data' : t
+    }
+    return render(request,"dashboard.html",context)
+
+def jobs(request):
+    global id
+    m = sql.connect(host='localhost', user='root', passwd='Viv@4369',database='iib')
+    cursor = m.cursor()
+
+    cmd = "select * from job"
+    cursor.execute(cmd)
+    t = tuple(cursor.fetchall())
+    context = {
+        'data' : t
+    }
+    return render(request,"jobs.html",context)
