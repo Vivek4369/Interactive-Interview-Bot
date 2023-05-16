@@ -32,6 +32,7 @@ urlpatterns = [
     path('dashboard/', user_views.dashboard),
     path('admin_login/',admin_views.admin_login),
     path('jobs/', user_views.jobs),
+    path('about_job/', user_views.about_job),
 
     path('admin_demo/', admin_views.admin_demo),  
     path('admin_home/', admin_views.admin_home),
@@ -42,6 +43,7 @@ urlpatterns = [
     path('admin_registration/', admin_views.admin_registration),
     path('admin_result/', admin_views.admin_result),
     path('admin_dashboard/', admin_views.admin_dashboard),
-    path('new_job/', admin_views.new_job)
+    path('new_job/', admin_views.new_job),
+    path('admin_jobs/', admin_views.admin_jobs)
 
 ]  

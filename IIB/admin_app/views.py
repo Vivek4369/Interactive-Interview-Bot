@@ -201,3 +201,16 @@ def new_job(request):
 
     else:
         return render(request,"new_job.html")
+    
+def admin_jobs(request):
+    global id
+    m = sql.connect(host='localhost', user='root', passwd='Viv@4369',database='iib')
+    cursor = m.cursor()
+
+    cmd = "select * from job"
+    cursor.execute(cmd)
+    t = tuple(cursor.fetchall())
+    context = {
+        'data' : t
+    }
+    return render(request,"admin_jobs.html",context)

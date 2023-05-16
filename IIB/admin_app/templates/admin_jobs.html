@@ -8,27 +8,26 @@
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{% static 'css/jobs.css' %}" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}?{% now 'U' %}" type="text/css" />
   <title>IIB: Recruitment Platform</title>
 </head>
-</html>
 <body>
       <!-- Header and Nav -->
   <header>
     <nav>
-      <div class="main">
-        
-        <ul class="main-list">
-            <li class="main-list-item"><a href="/home">Home</a></li>
-            <li class="main-list-item"><a href="/solutions">Solutions</a></li>
-            <li class="main-list-item"><a href="/features">Features</a></li>
-            <li class="active main-list-item"><a href="/jobs">Jobs</a></li>
-            <li class="main-list-item"><a href="/demo">Demo</a></li>
-            <li class="main-list-item"><a href="/dashboard">Dashboard</a></li>
+        <div class="main">
+          
+          <ul class="main-list">
+            <li class="main-list-item"><a href="/admin_home">Admin-Home</a></li>
+            <li class="main-list-item"><a href="/admin_solutions">Solutions</a></li>
+            <li class="main-list-item"><a href="/admin_features">Features</a></li>
+            <li class="active main-list-item"><a href="/admin_jobs">Jobs</a></li>
+            <li class="main-list-item"><a href="/admin_demo">Demo</a></li>
+            <li class="main-list-item"><a href="/admin_dashboard">Dashboard</a></li>
           </ul>
-      </div>
-    </nav>
+        </div>
+      </nav>
     <!-- // Header and Nav -->
 
   </header>

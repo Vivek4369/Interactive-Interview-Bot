@@ -9,10 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" href="{% static 'css/admin-style.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/admin-style.css' %}?{% now 'U' %}" type="text/css" />
   <title>IIB: Recruitment Platform</title>
 </head>
-</html>
 <body>
       <!-- Header and Nav -->
   <header>
@@ -23,7 +22,7 @@
           <li class="active main-list-item"><a href="/admin_home">Admin-Home</a></li>
           <li class="main-list-item"><a href="/admin_solutions">Solutions</a></li>
           <li class="main-list-item"><a href="/admin_features">Features</a></li>
-          <li class="main-list-item"><a href="/admin_resources">Resources</a></li>
+          <li class="main-list-item"><a href="/admin_jobs">Jobs</a></li>
           <li class="main-list-item"><a href="/admin_demo">Demo</a></li>
           <li class="main-list-item"><a href="/admin_dashboard">Dashboard</a></li>
         </ul>

@@ -3,8 +3,31 @@ from django.shortcuts import render
 from django.http import HttpResponse  
 from myapp.functions.functions import handle_uploaded_file  
 from myapp.forms import StudentForm  
-
+import numpy as np
+from numpy.core.numeric import NaN
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+import pandas as pd
+# import seaborn as sns
+import matplotlib.pyplot as plt
+import json
+import re
+import time
+import cv2
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import LabelEncoder
+# from flask import Flask , render_template , request , url_for , jsonify , Response
+# from werkzeug.utils import redirect, secure_filename
+# from flask_mail import Mail , Message
+# from flask_mysqldb import MySQL
+from pyresparser import ResumeParser
+# from fer import Video
+# from fer import FER
+# from video_analysis import extract_text , analyze_tone
+# from decouple import config
 import mysql.connector as sql
+import os
+
 fn=''
 ln=''
 mail=''
@@ -18,52 +41,53 @@ job=''
 
 def demo(request):  
     if request.method == 'POST':  
-        global fn,ln,mail,job,resumeScore
-        student = StudentForm(request.POST, request.FILES) 
-        context={}
-        score = handle_uploaded_file(request.FILES['file'],request.POST['job'])
-        # context = {
-        #     'score': score,
-        #     'name': request.POST['firstname'],
-        #     'job' : request.POST['job']
-        # }
-        m = sql.connect(host='localhost', user='root', passwd='Viv@4369',database='iib')
-        cursor = m.cursor()
-        data = request.POST
-        for key,value in data.items():
-            if key=="firstname":
-                fn = value
-            if key =="lastname":
-                ln = value
-            if key=="email":
-                mail = value
-            if key =="job":
-                job = value
-        
 
-        cmd = "insert into resume Values('{}','{}','{}','{}','{}')".format(fn,ln,mail,job,score)
-        cursor.execute(cmd)
-        m.commit()
 
-        cmd = "select * from resume"
-        cursor.execute(cmd)
-        t = tuple(cursor.fetchall())
-        context = {
-            'score': score,
-            'name': request.POST['firstname'],
-            'job' : request.POST['job'],
-            'resumedata' : t
-        }
-        return render(request,"result.html",context)
+        fname = request.POST['firstname'].capitalize()
+        lname = request.POST['lastname'].capitalize()
+        age = int(request.POST['age'])
+        gender = request.POST['gender']
+        email = request.POST['email']
+        file = request.FILES['resume']
         
-        # if student.is_valid():  
-        #     handle_uploaded_file(request.FILES['file'])  
-        #     # return HttpResponse("File uploaded successfuly")  
-        #     score = num
-        #     return render(request,"result.html",score)
+        val1 = request.POST['openness']
+        val2 = request.POST['neuroticism']
+        val3 = request.POST['conscientiousness']
+        val4 = request.POST['agreeableness']
+        val5 = request.POST['extraversion']
+
+        df = pd.read_csv(r'myapp\static\trainDataset.csv')
+        le = LabelEncoder()
+        df['Gender'] = le.fit_transform(df['Gender'])
+        x_train = df.iloc[:, :-1].to_numpy()
+        y_train = df.iloc[:, -1].to_numpy(dtype = str)
+        lreg = LogisticRegression(multi_class='multinomial', solver='newton-cg',max_iter =1000)
+        lreg.fit(x_train, y_train)
+
+        if gender == 'male':
+            gender = 1
+        elif gender == 'female': 
+            gender = 0
+        input =  [gender, age, val1, val2, val3, val4, val5]
+
+        pred = str(lreg.predict([input])[0]).capitalize()
+
+        # get data from the resume
+        score = handle_uploaded_file(request.FILES['resume'],'software developer')
+        msg = ''
+        if score<50 :
+            msg = 'You have low resume score, work on your resume to get hired easily'
+        elif score<70 :
+            msg = 'You have a good resume score'
+        else:
+            msg = 'You have a great resume score'
+
+        result = {'Name':fname+' '+lname , 'Age':age , 'Email':email , 'score':score, 'msg':msg, 'PredictedPersonality':pred}
+
+        return render(request,"result.html",result)
     else:  
         student = StudentForm()  
-        return render(request,"demo.html",{'form':student})  
+        return render(request,"demo.html") 
 
 def login(request):
     global mail,pw,id
@@ -177,3 +201,16 @@ def jobs(request):
         'data' : t
     }
     return render(request,"jobs.html",context)
+
+def about_job(request):
+    global id
+    m = sql.connect(host='localhost', user='root', passwd='Viv@4369',database='iib')
+    cursor = m.cursor()
+
+    cmd = "select * from job"
+    cursor.execute(cmd)
+    t = tuple(cursor.fetchall())
+    context = {
+        'data' : t
+    }
+    return render(request,"about_job.html",context)

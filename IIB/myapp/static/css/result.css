@@ -1,9 +1,12 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: raleway,sans-serif;
     margin: 0;
     padding: 0;
   }
-  
+  .header{
+    margin-top:40px;
+  }
+
   h4 {
     font-size: 28px;
     margin: 20px;
@@ -11,33 +14,18 @@ body {
     color: #333;
   }
   
+  .result{
+    margin:50px;
+    padding : 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+
   p {
-    font-size: 18px;
+    font-size: 20px;
     margin: 10px;
     color: #333;
   }
-  
-  table {
-    border-collapse: collapse;
-    margin: 20px;
-    width: 100%;
-  }
-  
-  table td, table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  table th {
-    background-color: #f2f2f2;
-    color: #333;
-  }
-  
-  .title {
-    font-size: 36px;
-    margin: 20px;
-    text-align: center;
-    color: #333;
-  }
+
+  .msg{font-size: 15px;}
   
