@@ -3,13 +3,13 @@
 Welcome to the Interactive Interview Bot! This Django-based bot aims to automate and streamline the interview process by replacing human interviewers with an interactive bot. It conducts both technical and human resource interviews, utilizing a resume parser to identify potential candidates by analyzing and extracting relevant information from their resumes.
 
 ## Features
-#### Automated Interviewing: 
+#### 1. Automated Interviewing:
 The bot serves as an automated interviewer, engaging candidates in a conversation and asking relevant questions.
-#### Resume Parsing: 
+#### 2. Resume Parsing: 
 Before the interview, the bot utilizes a resume parser to extract relevant information from candidates' resumes for analysis.
-#### Question Evaluation: 
+#### 3. Question Evaluation: 
 The bot evaluates candidates' responses and provides a comprehensive report based on their performance.
-#### Efficient Candidate Shortlisting: 
+#### 4. Efficient Candidate Shortlisting: 
 By automating the interview process and integrating resume parsing, the bot simplifies and optimizes the candidate selection process.
 
 ## Getting Started
@@ -17,26 +17,26 @@ To set up and use the Interactive Interview Bot, follow these steps:
 1. Clone the repository to your local machine.
 2. Install the required dependencies using ,pip install -r requirements.txt'.
 3. Configure the bot by editing the necessary settings in 'settings.py', such as database connections and credentials.
-4.Set up the resume parser functionality by integrating a resume parsing library or service of your choice.
+4. Set up the resume parser functionality by integrating a resume parsing library or service of your choice.
 5. Define the interview questions and their evaluation criteria in the Django admin interface or by modifying the relevant models.
 6. Run the Django development server using 'python manage.py runserver'.
 7. Access the bot interface by opening a web browser and navigating to 'http://localhost:8000'.
 
 ## Configuration
 The bot's configuration can be customized using Django's settings. Key configuration options include:
-*Database configuration: Set up the database connection and credentials in settings.py.
-*Interview questions: Define the interview questions and their evaluation criteria using the Django admin interface or by modifying the relevant models.
-*Resume parser integration: Integrate a resume parsing library or service of your choice to extract relevant information from candidates' resumes.
+1. Database configuration: Set up the database connection and credentials in settings.py.
+2. Interview questions: Define the interview questions and their evaluation criteria using the Django admin interface or by modifying the relevant models.
+3. Resume parser integration: Integrate a resume parsing library or service of your choice to extract relevant information from candidates' resumes.
 
 ## Extending Functionality
 The Interactive Interview Bot can be extended to add new features or modify existing ones. Here are some suggestions:
-#### Integration with Natural Language Processing (NLP): 
+#### 1. Integration with Natural Language Processing (NLP): 
 Use NLP libraries or APIs to analyze and evaluate candidates' responses for sentiment analysis or to extract key information.
-#### Integration with Machine Learning: 
+#### 2. Integration with Machine Learning: 
 Train machine learning models to automate the evaluation process and provide more accurate insights on candidates' performance.
-#### Integration with External Services: 
+#### 3. Integration with External Services: 
 Integrate with external services, such as video conferencing tools, to conduct interviews remotely or record video responses.
-#### Enhance User Interface: 
+#### 4. Enhance User Interface: 
 Improve the user interface by adding features such as real-time typing indicators, chat bubbles, or visual cues for different question types.
 
 ## Contributing
