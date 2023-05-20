@@ -3,13 +3,13 @@
 Welcome to the Interactive Interview Bot! This Django-based bot aims to automate and streamline the interview process by replacing human interviewers with an interactive bot. It conducts both technical and human resource interviews, utilizing a resume parser to identify potential candidates by analyzing and extracting relevant information from their resumes.
 
 ## Features
-### *Automated Interviewing: 
+#### Automated Interviewing: 
 The bot serves as an automated interviewer, engaging candidates in a conversation and asking relevant questions.
-### *Resume Parsing: 
+#### Resume Parsing: 
 Before the interview, the bot utilizes a resume parser to extract relevant information from candidates' resumes for analysis.
-### *Question Evaluation: 
+#### Question Evaluation: 
 The bot evaluates candidates' responses and provides a comprehensive report based on their performance.
-### *Efficient Candidate Shortlisting: 
+#### Efficient Candidate Shortlisting: 
 By automating the interview process and integrating resume parsing, the bot simplifies and optimizes the candidate selection process.
 
 ## Getting Started
@@ -30,13 +30,13 @@ The bot's configuration can be customized using Django's settings. Key configura
 
 ## Extending Functionality
 The Interactive Interview Bot can be extended to add new features or modify existing ones. Here are some suggestions:
-### *Integration with Natural Language Processing (NLP): 
+#### Integration with Natural Language Processing (NLP): 
 Use NLP libraries or APIs to analyze and evaluate candidates' responses for sentiment analysis or to extract key information.
-### *Integration with Machine Learning: 
+#### Integration with Machine Learning: 
 Train machine learning models to automate the evaluation process and provide more accurate insights on candidates' performance.
-### *Integration with External Services: 
+#### Integration with External Services: 
 Integrate with external services, such as video conferencing tools, to conduct interviews remotely or record video responses.
-### *Enhance User Interface: 
+#### Enhance User Interface: 
 Improve the user interface by adding features such as real-time typing indicators, chat bubbles, or visual cues for different question types.
 
 ## Contributing
